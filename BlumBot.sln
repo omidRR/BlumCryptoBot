@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.34929.205
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlumBot", "BlumBot.csproj", "{80381389-DD56-423C-A92F-B70C67D145CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80381389-DD56-423C-A92F-B70C67D145CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80381389-DD56-423C-A92F-B70C67D145CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80381389-DD56-423C-A92F-B70C67D145CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80381389-DD56-423C-A92F-B70C67D145CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCF1DABB-52D3-4386-B2C6-98FD17B3E884}
+	EndGlobalSection
+EndGlobal
