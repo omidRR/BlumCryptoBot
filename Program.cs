@@ -15,6 +15,7 @@ class Program
         {
             try
             {
+                
                 Console.Write("Enter number of repetitions: ");
                 if (!int.TryParse(Console.ReadLine(), out int repetitions))
                 {
@@ -69,9 +70,11 @@ class Program
     }
 
     static string GetAuthorizationToken()
-    {
+    { 
+        Console.WriteLine("Development by omidRR");
         while (true)
         {
+           
             Console.Write("Enter authorization token: ");
             string token = Console.ReadLine().Trim();
 
