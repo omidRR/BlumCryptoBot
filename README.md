@@ -7,7 +7,9 @@
   2. Press **F12** then in the console tab
   3. Copy **Authorization** and enter it in the program
 
-**We are not responsible for the banning of your account**
+If the program closes, just install NET Runtime 8.0.6
+
+[Download .NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ### How to work?
 
