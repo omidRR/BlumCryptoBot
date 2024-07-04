@@ -16,7 +16,7 @@ class Program
             try
             {
                 
-                Console.Write("Enter number of repetitions: ");
+                Console.Write("Enter number of repetitions(Warning: Do not enter a repeat count greater than the number of games!): ");
                 if (!int.TryParse(Console.ReadLine(), out int repetitions))
                 {
                     Console.WriteLine("Invalid number of repetitions.");
@@ -33,9 +33,9 @@ class Program
                     points = random.Next(260, 300);
                     Console.WriteLine($"No points entered. Using random points: {points}");
                 }
-                else if (!int.TryParse(pointsInput, out points) || points < 250 || points > 300)
+                else if (!int.TryParse(pointsInput, out points) || points < 10 || points > 2000)
                 {
-                    Console.WriteLine("Invalid points value. Please enter a number between 250 and 300.");
+                    Console.WriteLine("Invalid points value. Please enter a number between 10 and 300.");
                     continue;
                 }
 
