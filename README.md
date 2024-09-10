@@ -13,5 +13,6 @@ If the program closes, just install NET Runtime 8.0.6
 
 ### How to work?
 
-https://github.com/omidRR/BlumCryptoBot/assets/64539596/d60566e4-0b7d-472f-a4f5-906a9c23c529
+
+https://github.com/omidRR/BlumCryptoBot/assets/64539596/d7a7afb4-57d2-4be5-b046-26d85e28ab99
 
