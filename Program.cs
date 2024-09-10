@@ -23,14 +23,14 @@ class Program
                     continue;
                 }
 
-                Console.Write("Enter points (suggested between 250 and 300): ");
+                Console.Write("Enter points (suggested between 250 and 270): ");
                 string pointsInput = Console.ReadLine();
                 int points;
 
                 if (string.IsNullOrEmpty(pointsInput))
                 {
                     Random random = new Random();
-                    points = random.Next(260, 300);
+                    points = random.Next(250, 270);
                     Console.WriteLine($"No points entered. Using random points: {points}");
                 }
                 else if (!int.TryParse(pointsInput, out points) || points < 10 || points > 2000)
@@ -43,6 +43,7 @@ class Program
 
                 for (int i = 0; i < repetitions; i++)
                 {
+                    Thread.Sleep(1000);
                     tasks.Add(MakeRequestsAsync(authorizationToken, points, i + 1));
                 }
 
@@ -84,7 +85,6 @@ class Program
                 continue;
             }
 
-            // Check if the token starts with "Bearer " and add it if not
             if (!token.StartsWith("Bearer "))
             {
                 token = "Bearer " + token;
@@ -96,6 +96,7 @@ class Program
 
     static async Task<string> MakeRequestsAsync(string authorizationToken, int points, int iteration)
     {
+        Thread.Sleep(500);
         using (HttpClient client = new HttpClient())
         {
             client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0");
@@ -111,10 +112,8 @@ class Program
             client.DefaultRequestHeaders.Add("sec-fetch-mode", "cors");
             client.DefaultRequestHeaders.Add("sec-fetch-site", "same-site");
 
-            // First POST request
             HttpResponseMessage response = await client.PostAsync("https://game-domain.blum.codes/api/v1/game/play", null);
 
-            // Check if the request was successful
             if (!response.IsSuccessStatusCode)
             {
                 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
@@ -133,7 +132,6 @@ class Program
             Console.WriteLine($"Response from /game/play (Iteration {iteration}):");
             Console.WriteLine(responseContent);
 
-            // Parse gameId from the response
             var json = JObject.Parse(responseContent);
             string gameId = json["gameId"].ToString();
 
@@ -141,7 +139,6 @@ class Program
             Console.WriteLine($"Iteration {iteration}: Wait for 32 seconds...");
             await Task.Delay(32000);
 
-            // Second POST request
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0");
             client.DefaultRequestHeaders.Add("Accept", "application/json, text/plain, */*");
