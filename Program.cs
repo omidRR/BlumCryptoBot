@@ -15,7 +15,7 @@ class Program
         {
             try
             {
-                
+
                 Console.Write("Enter number of repetitions(Warning: Do not enter a repeat count greater than the number of games!): ");
                 if (!int.TryParse(Console.ReadLine(), out int repetitions))
                 {
@@ -47,10 +47,8 @@ class Program
                     tasks.Add(MakeRequestsAsync(authorizationToken, points, i + 1));
                 }
 
-                // Wait for all tasks to complete
                 string[] results = await Task.WhenAll(tasks);
 
-                // Display all results
                 for (int i = 0; i < results.Length; i++)
                 {
                     Console.WriteLine($"Result of iteration {i + 1}:\n{results[i]}\n");
@@ -71,11 +69,11 @@ class Program
     }
 
     static string GetAuthorizationToken()
-    { 
+    {
         Console.WriteLine("Development by omidRR");
         while (true)
         {
-           
+
             Console.Write("Enter authorization token: ");
             string token = Console.ReadLine().Trim();
 
@@ -161,11 +159,9 @@ class Program
 
             StringContent content = new StringContent(JObject.FromObject(payload).ToString(), Encoding.UTF8, "application/json");
 
-            // Sending the request with content
             response = await client.PostAsync("https://game-domain.blum.codes/api/v1/game/claim", content);
             responseContent = await response.Content.ReadAsStringAsync();
 
-            // Check if the request was successful
             if (!response.IsSuccessStatusCode)
             {
                 string errorMessage = await response.Content.ReadAsStringAsync();
