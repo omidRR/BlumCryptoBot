@@ -6,7 +6,7 @@ class Program
     static async Task Main(string[] args)
     {
         string authorizationToken = GetAuthorizationToken();
-        int maxRetries = 8;
+        int maxRetries = 12;
         int retryDelay = 2000;
         int attempt = 0;
         while (true)
@@ -15,6 +15,7 @@ class Program
             {
                 try
                 {
+                    Console.WriteLine("W8 To get Balance Value");
                     using (HttpClient client = new HttpClient())
                     {
                         client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0");
@@ -115,7 +116,7 @@ class Program
                         Random random = new Random();
                         points = random.Next(250, 270); 
                         Console.WriteLine($"Iteration {i + j + 1}: Random points = {points}");
-                        Thread.Sleep(1000);
+                        Thread.Sleep(3000);
                         taskBatch.Add(MakeRequestsAsync(authorizationToken, points, i + j + 1));
                     }
 
@@ -170,7 +171,7 @@ class Program
 
     static async Task<string> MakeRequestsAsync(string authorizationToken, int points, int iteration)
     {
-        int maxRetries = 3;
+        int maxRetries = 4;
         int retryDelay = 2000;
         int attempt = 0;
 
@@ -209,7 +210,7 @@ class Program
                         {
                             Console.WriteLine($"Iteration {iteration}: Cannot start game. Retrying in 13 seconds...");
                             await Task.Delay(10000); 
-                            Thread.Sleep(3000);
+                            Thread.Sleep(5000);
                             attempt++;
                             continue; 
                         }
@@ -259,9 +260,6 @@ class Program
                         Console.WriteLine($"Error from /game/claim (Iteration {iteration}): {responseContent}");
                         return $"Iteration {iteration} failed.";
                     }
-
-                    Console.WriteLine($"Response from /game/claim (Iteration {iteration}):");
-
                     return $"Response==> {responseContent}";
                 }
             }
